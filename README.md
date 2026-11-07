@@ -10,14 +10,14 @@ An Android Transparent Youtube/Twitch/Kick Chat viewer app for IRL streaming.
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com)
 [![Kick](https://img.shields.io/badge/Kick-00E701?style=for-the-badge&logo=kick&logoColor=white)](https://kick.com/)
 [![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://)
-![GitHub repo size](https://img.shields.io/github/repo-size/masarujp2022/Chat-Overlay?&style=for-the-badge)
-[![Last Commit](https://img.shields.io/github/last-commit/masarujp2022/Chat-Overlay?style=for-the-badge)](https://github.com/masarujp2022/Chat-Overlay/commits)
+![GitHub repo size](https://img.shields.io/github/repo-size/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
+[![Last Commit](https://img.shields.io/github/last-commit/kongjjj2k3/Chat-Overlay?style=for-the-badge)](https://github.com/kongjjj2k3/Chat-Overlay/commits)
 <br>
-![GitHub language count](https://img.shields.io/github/languages/count/masarujp2022/Chat-Overlay?&style=for-the-badge)
-![GitHub top language](https://img.shields.io/github/languages/top/masarujp2022/Chat-Overlay?&style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
 [![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)](LICENSE)
-[![Release](https://img.shields.io/github/release/masarujp2022/Chat-Overlay?color=0000FF&label=Release&style=for-the-badge&logo=android&logoColor=white)](https://github.com/masarujp2022/Chat-Overlay/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/masarujp2022/Chat-Overlay/total?label=Downloads&style=for-the-badge&color=lightgreen)](https://github.com/masarujp2022/Chat-Overlay/releases)
+[![Release](https://img.shields.io/github/release/kongjjj2k3/Chat-Overlay?color=0000FF&label=Release&style=for-the-badge&logo=android&logoColor=white)](https://github.com/kongjjj2k3/Chat-Overlay/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/kongjjj2k3/Chat-Overlay/total?label=Downloads&style=for-the-badge&color=lightgreen)](https://github.com/kongjjj2k3/Chat-Overlay/releases)
 
 
 </div>
