@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace = "com.kongjjj.overlay"
-    compileSdk = 36 // Updated to integer as suggested by standard
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.kongjjj.overlay"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 38
-        versionName = "1.38"
+        targetSdk = 37
+        versionCode = 39
+        versionName = "1.39"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -36,7 +36,7 @@ android {
 }
 
 base {
-    archivesName.set("Chat_overlay_1.38")
+    archivesName.set("Chat_overlay_1.39")
 }
 
 dependencies {
