@@ -1,4 +1,4 @@
-**繁體中文** | [English](README_EN.md) | [日本語](README.md) 
+**繁體中文** | [English](README.md) | [日本語](README_JP.md) 
 <div align="center">
 <img src="pics/Logo.jpg" width="150" height="150" alt="Chat Overlay">
 
@@ -9,10 +9,15 @@
 [![Twitch](https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com)
 [![Kick](https://img.shields.io/badge/Kick-00E701?style=for-the-badge&logo=kick&logoColor=white)](https://kick.com/)
-[![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://github.com/kongjjj/Chat-Overlay)
-![GitHub top language](https://img.shields.io/github/languages/top/masarujp2022/Chat-Overlay?&style=for-the-badge)
-[![Release](https://img.shields.io/github/release/masarujp2022/Chat-Overlay?color=0000FF&label=Release&style=for-the-badge)](https://github.com/masarujp2022/Chat-Overlay/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/masarujp2022/Chat-Overlay/total?label=Downloads&style=for-the-badge&color=lightgreen)](https://github.com/masarujp2022/Chat-Overlay/releases)
+[![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://)
+![GitHub repo size](https://img.shields.io/github/repo-size/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
+[![Last Commit](https://img.shields.io/github/last-commit/kongjjj2k3/Chat-Overlay?style=for-the-badge)](https://github.com/kongjjj2k3/Chat-Overlay/commits)
+<br>
+![GitHub language count](https://img.shields.io/github/languages/count/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
+[![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)](LICENSE)
+[![Release](https://img.shields.io/github/release/kongjjj2k3/Chat-Overlay?color=0000FF&label=Release&style=for-the-badge&logo=android&logoColor=white)](https://github.com/kongjjj2k3/Chat-Overlay/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/kongjjj2k3/Chat-Overlay/total?label=Downloads&style=for-the-badge&color=lightgreen)](https://github.com/kongjjj2k3/Chat-Overlay/releases)
 
 
 </div>

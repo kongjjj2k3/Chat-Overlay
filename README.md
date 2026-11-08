@@ -1,50 +1,54 @@
-**日本語** | [English](README_EN.md) | [繁體中文](README_ZH.md)
+**English** | [繁體中文](README_ZH.md) | [日本語](README_JP.md) 
 <div align="center">
 <img src="pics/Logo.jpg" width="150" height="150" alt="Chat Overlay">
 
 <h1>Chat Overlay</h1>
 
-ログイン不要 Android向けの透明なYouTube/Twitch/Kickチャットオーバーレイ、ライブ配信で使用するもの。
+An Android Transparent Youtube/Twitch/Kick Chat viewer app for IRL streaming.
 <br><br>
 [![Twitch](https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com)
 [![Kick](https://img.shields.io/badge/Kick-00E701?style=for-the-badge&logo=kick&logoColor=white)](https://kick.com/)
 [![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://)
-![GitHub top language](https://img.shields.io/github/languages/top/masarujp2022/Chat-Overlay?&style=for-the-badge)
-[![Release](https://img.shields.io/github/release/masarujp2022/Chat-Overlay?color=0000FF&label=Release&style=for-the-badge)](https://github.com/masarujp2022/Chat-Overlay/releases/latest)
-[![Downloads](https://img.shields.io/github/downloads/masarujp2022/Chat-Overlay/total?label=Downloads&style=for-the-badge&color=lightgreen)](https://github.com/masarujp2022/Chat-Overlay/releases)
+![GitHub repo size](https://img.shields.io/github/repo-size/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
+[![Last Commit](https://img.shields.io/github/last-commit/kongjjj2k3/Chat-Overlay?style=for-the-badge)](https://github.com/kongjjj2k3/Chat-Overlay/commits)
+<br>
+![GitHub language count](https://img.shields.io/github/languages/count/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
+![GitHub top language](https://img.shields.io/github/languages/top/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
+[![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)](LICENSE)
+[![Release](https://img.shields.io/github/release/kongjjj2k3/Chat-Overlay?color=0000FF&label=Release&style=for-the-badge&logo=android&logoColor=white)](https://github.com/kongjjj2k3/Chat-Overlay/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/kongjjj2k3/Chat-Overlay/total?label=Downloads&style=for-the-badge&color=lightgreen)](https://github.com/kongjjj2k3/Chat-Overlay/releases)
 
 
 </div>
 
 ---
 
-## 機能
+## Features
 
-- ✔️ Twitch、YouTube、Kickのチャットルームを表示。
-- ✔️ Text-to-Speechによるチャットメッセージの読み上げ。
-- ✔️ 3つの言語から選択可能：繁体字中国語、英語、日本語。
-- ✔️ 文字サイズ、行間、ユーザー名、絵文字のサイズを個別に調整可能。
-- ✔️ 透明なチャットウィンドウは自由に移動・サイズ変更可能。
-- ✔️ UIは3秒後に自動的に非表示になり、コメント部分のみが表示されます。コメントの左半分をタップするとUIが再表示されます。
-- ✔️ Twitch 視聴者数・配信時間表示。
-- ✔️ Twitch チャンネルアナウンス、視聴ストリーク、サブスク、レイド、その他の特殊メッセージの表示。
-- ✔️ YouTube の Super Chat、Super Sticker、メンバーシップ加入の通知表示を追加。
-- ✔️ YouTube の視聴者数表示。
-- ✔️ Kick の視聴者数表示。
+- ✔️ Display in Twitch, YouTube and Kick chatrooms.
+- ✔️ Text-to-Speech reading of chat messages, Chat hyperlinks can be clicked to pop up a browser.
+- ✔️ 3 language options: Traditional Chinese, English, and Japanese.
+- ✔️ Font size, shadow, line spacing, usernames, and emoji size can be adjusted individually.
+- ✔️ The transparent chat box can be freely moved and resized.
+- ✔️ The UI will automatically hide after 3 seconds, and only the comment section will remain visible. Clicking the left half of the comment section will bring back the UI.
+- ✔️ Twitch Stream info (Viewer Count & Stream Duration, Stream Category and Stream Title) Display.
+- ✔️ Display support for Twitch channel announcements, watch streaks, subscriptions, raids, and other special messages.
+- ✔️ Notification display for YouTube Super Chats, Super Stickers, and Channel Memberships.
+- ✔️ YouTube viewer count display.
+- ✔️ Kick viewer count display.
   
-![Chat-Overlay](pics/Screenshot_7J.jpg)
+![Chat-Overlay](pics/Screenshot_7EN.jpg)
 
 ---
 
-## 使用方法
-- UIインターフェースのボタン説明。
+## Usage
 ![Chat-Overlay](pics/Screenshot_3E.jpg)
-- 他の配信ソフトと連携して使用する際の画面。UIが表示されている状態。
+- The screen view when used with live streaming software.Before UI Disappears.
 ![Chat-Overlay](pics/Screenshot_4.jpg)
-- UI非表示後。
+- After UI Disappears.
 ![Chat-Overlay](pics/Screenshot_5.jpg)
-- その他のスクリーンショット
+- Other Screenshots
 ![Chat-Overlay](pics/Screenshot_8C.jpg)
 ![Chat-Overlay](pics/Screenshot_9.jpg)  
 ![Chat-Overlay](pics/Screenshot_10.jpg)
@@ -54,12 +58,13 @@
 ![Chat-Overlay](pics/Screenshot_14.jpg) 
 ---
 
-## インストール方法
-[GitHub releases](https://github.com/masarujp2022/Chat-Overlay/releases) にて最新の .apk ファイルを公開します。
+## Installation Method
+I will publish the latest .apk file in the [GitHub releases](https://github.com/masarujp2022/Chat-Overlay/releases) 
 
-スマートフォンで GitHub のリリースページを開き、.apk ファイルをダウンロードしてインストールしてください。
+You can open the GitHub releases page on your phone, download the .apk file, and install it.
 
 ---
 
-## その他の制作アプリ
+## Other projects I have made
+
 
