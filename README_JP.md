@@ -60,7 +60,7 @@
 ---
 
 ## インストール方法
-[GitHub releases](https://github.com/masarujp2022/Chat-Overlay/releases) にて最新の .apk ファイルを公開します。
+[GitHub releases](https://github.com/kongjjj2k3/Chat-Overlay/releases) にて最新の .apk ファイルを公開します。
 
 スマートフォンで GitHub のリリースページを開き、.apk ファイルをダウンロードしてインストールしてください。
 
