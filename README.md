@@ -59,7 +59,7 @@
 ---
 
 ## Installation Method
-I will publish the latest .apk file in the [GitHub releases](https://github.com/masarujp2022/Chat-Overlay/releases) 
+I will publish the latest .apk file in the [GitHub releases](https://github.com/kongjjj2k3/Chat-Overlay/releases) 
 
 You can open the GitHub releases page on your phone, download the .apk file, and install it.
 
