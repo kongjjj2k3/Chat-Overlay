@@ -53,6 +53,7 @@ fun ChatScreen(
     twitchChannel: String,
     youtubeChannelId: String,
     kickChannel: String = "",
+    youtubeHandle: String = "",
     chatMessages: List<ChatMessage>,
     chatConnected: Boolean,
     thirdPartyEmotes: Map<String, String>,
@@ -192,7 +193,7 @@ fun ChatScreen(
                                         )
                                 )
                                 Text(
-                                    text = "YouTube: $youtubeChannelId",
+                                    text = "YouTube: ${youtubeHandle.ifEmpty { youtubeChannelId }}",
                                     style = MaterialTheme.typography.labelSmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )

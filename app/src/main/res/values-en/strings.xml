@@ -7,7 +7,6 @@
     <string name="menu_button_desc">Menu</string>
     <string name="minimize_button_desc">Minimize</string>
     <string name="created_by">Created by kongjjj</string>
-    <string name="foreground_service_special_use_description">Used to display a draggable floating icon; clicking it restores the application\'s main interface.</string>
     <string name="instruction_dialog_title">Instructions</string>
     <string name="instruction_dialog_message">Go to https://streamelements.com/ and add a new Chat overlay (Stream tools > Your stream\'s chat), with a size of 730px x 360px. If it gets too big, it will go off-screen.</string>
     <string name="ok">OK</string>

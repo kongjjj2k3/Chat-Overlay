@@ -57,6 +57,7 @@ class MainActivity : ComponentActivity() {
                 val chatManager = remember { ChatManager.getInstance(applicationContext) }
                 
                 val twitchChannel by chatManager.twitchChannel.collectAsState()
+                val youtubeHandle by chatManager.youtubeHandle.collectAsState()
                 val youtubeChannelId by chatManager.youtubeChannelId.collectAsState()
                 val kickChannel by chatManager.kickChannel.collectAsState()
                 val fontSize by chatManager.chatFontSize.collectAsState()
@@ -218,7 +219,7 @@ class MainActivity : ComponentActivity() {
                     if (showSettings) {
                         SettingsDialog(
                             twitchChannel = twitchChannel,
-                            youtubeChannelId = youtubeChannelId,
+                            youtubeChannelId = youtubeHandle.ifEmpty { youtubeChannelId },
                             kickChannel = kickChannel,
                             chatFontSize = fontSize,
                             chatLineSpacing = lineSpacing,
@@ -250,7 +251,7 @@ class MainActivity : ComponentActivity() {
                             ttsIgnoreLinks = ttsIgnoreLinks,
                             ttsOnlySubOrCheer = ttsOnlySubOrCheer,
                             onSaveChannel = { chatManager.saveTwitchChannel(it, this@MainActivity) },
-                            onSaveYoutubeChannelId = { chatManager.saveYoutubeChannelId(it, this@MainActivity) },
+                            onSaveYoutubeChannelId = { input, onComplete -> chatManager.saveYoutubeChannelId(input, this@MainActivity, onComplete) },
                             onSaveKickChannel = { chatManager.saveKickChannel(it, this@MainActivity) },
                             onFontSizeChange = { chatManager.saveFontSize(it, this@MainActivity) },
                             onLineSpacingChange = { chatManager.saveLineSpacing(it, this@MainActivity) },

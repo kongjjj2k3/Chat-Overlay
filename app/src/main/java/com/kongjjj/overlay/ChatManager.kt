@@ -22,6 +22,7 @@ import okhttp3.Request
 import okhttp3.RequestBody.Companion.toRequestBody
 import org.json.JSONArray
 import org.json.JSONObject
+import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.Locale
 import java.util.TimeZone
@@ -40,6 +41,7 @@ class ChatManager private constructor(context: Context) {
     
     // Settings state
     val twitchChannel = MutableStateFlow("")
+    val youtubeHandle = MutableStateFlow("")
     val youtubeChannelId = MutableStateFlow("")
     val kickChannel = MutableStateFlow("")
     val chatFontSize = MutableStateFlow(DEFAULT_FONT_SIZE)
@@ -111,8 +113,22 @@ class ChatManager private constructor(context: Context) {
         }
 
         twitchChannel.value = prefs.getString("twitch_channel", "") ?: ""
+        youtubeHandle.value = prefs.getString("youtube_handle", "") ?: ""
         youtubeChannelId.value = prefs.getString("youtube_channel_id", "") ?: ""
         kickChannel.value = prefs.getString("kick_channel", "") ?: ""
+
+        if (youtubeHandle.value.isNotEmpty() && youtubeChannelId.value.isEmpty()) {
+            scope.launch {
+                val resolvedId = fetchChannelIdFromHandle(youtubeHandle.value)
+                if (resolvedId != null) {
+                    youtubeChannelId.value = resolvedId
+                    prefs.edit { putString("youtube_channel_id", resolvedId) }
+                    if (!youtubeClient.connected.value) {
+                        youtubeClient.connect(resolvedId)
+                    }
+                }
+            }
+        }
         chatFontSize.value = prefs.getFloat("chat_font_size", DEFAULT_FONT_SIZE)
         chatLineSpacing.value = prefs.getFloat("chat_line_spacing", DEFAULT_LINE_SPACING)
         chatEmoteSize.value = prefs.getFloat("chat_emote_size", DEFAULT_EMOTE_SIZE)
@@ -633,15 +649,114 @@ class ChatManager private constructor(context: Context) {
         }
     }
 
-    fun saveYoutubeChannelId(channelId: String, context: Context) {
-        youtubeChannelId.value = channelId
-        context.getSharedPreferences("OverlayPrefs", Context.MODE_PRIVATE).edit { putString("youtube_channel_id", channelId) }
-        cachedYoutubeVideoId = null
-        startYoutubeViewerUpdates()
-        if (channelId.isNotEmpty()) {
-            youtubeClient.connect(channelId)
-        } else {
+    suspend fun fetchChannelIdFromHandle(handleInput: String): String? = withContext(Dispatchers.IO) {
+        var cleanHandle = handleInput.trim()
+        if (cleanHandle.isEmpty()) return@withContext null
+
+        // If user directly entered a valid UC... Channel ID
+        if (cleanHandle.startsWith("UC") && cleanHandle.length in 20..30 && !cleanHandle.contains(" ")) {
+            return@withContext cleanHandle
+        }
+
+        if (!cleanHandle.startsWith("@")) {
+            cleanHandle = "@$cleanHandle"
+        }
+
+        val handleName = cleanHandle.removePrefix("@").trim()
+        if (handleName.isEmpty()) return@withContext null
+
+        val encodedHandle = try {
+            URLEncoder.encode(handleName, "UTF-8")
+        } catch (_: Exception) {
+            handleName
+        }
+        val url = "https://www.youtube.com/@$encodedHandle"
+
+        try {
+            val request = Request.Builder()
+                .url(url)
+                .header("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64)")
+                .header("Accept-Language", "zh-TW,zh;q=0.9,en-US;q=0.8")
+                .build()
+
+            httpClient.newCall(request).execute().use { response ->
+                if (!response.isSuccessful) return@withContext null
+                val html = response.body?.string() ?: return@withContext null
+
+                // 1. canonical link
+                val canonicalRegex = Regex("""<link\s+rel="canonical"\s+href="https://www\.youtube\.com/channel/(UC[\w-]+)"""")
+                canonicalRegex.find(html)?.groupValues?.getOrNull(1)?.let { return@withContext it }
+
+                // 2. externalId
+                val externalIdRegex = Regex(""""externalId"\s*:\s*"(UC[\w-]+)"""")
+                externalIdRegex.find(html)?.groupValues?.getOrNull(1)?.let { return@withContext it }
+
+                // 3. channelId
+                val channelIdRegex = Regex(""""channelId"\s*:\s*"(UC[\w-]+)"""")
+                channelIdRegex.find(html)?.groupValues?.getOrNull(1)?.let { return@withContext it }
+
+                // 4. /channel/UC...
+                val hrefRegex = Regex("""/channel/(UC[\w-]+)""")
+                hrefRegex.find(html)?.groupValues?.getOrNull(1)?.let { return@withContext it }
+            }
+        } catch (e: Exception) {
+            Log.e("ChatManager", "Failed to resolve YouTube handle: $handleInput", e)
+        }
+
+        return@withContext null
+    }
+
+    fun saveYoutubeChannelId(input: String, context: Context, onComplete: ((Boolean) -> Unit)? = null) {
+        val trimmed = input.trim()
+        if (trimmed.isEmpty()) {
+            youtubeHandle.value = ""
+            youtubeChannelId.value = ""
+            context.getSharedPreferences("OverlayPrefs", Context.MODE_PRIVATE).edit {
+                putString("youtube_handle", "")
+                putString("youtube_channel_id", "")
+            }
+            cachedYoutubeVideoId = null
             youtubeClient.disconnect()
+            onComplete?.invoke(true)
+            return
+        }
+
+        val handleToSave = if (!trimmed.startsWith("UC") && !trimmed.startsWith("@")) {
+            "@$trimmed"
+        } else {
+            trimmed
+        }
+
+        youtubeHandle.value = handleToSave
+        context.getSharedPreferences("OverlayPrefs", Context.MODE_PRIVATE).edit {
+            putString("youtube_handle", handleToSave)
+        }
+
+        scope.launch {
+            val resolvedId = fetchChannelIdFromHandle(handleToSave)
+            if (resolvedId != null) {
+                youtubeChannelId.value = resolvedId
+                context.getSharedPreferences("OverlayPrefs", Context.MODE_PRIVATE).edit {
+                    putString("youtube_channel_id", resolvedId)
+                }
+                cachedYoutubeVideoId = null
+                startYoutubeViewerUpdates()
+                youtubeClient.connect(resolvedId)
+                onComplete?.invoke(true)
+            } else {
+                if (trimmed.startsWith("UC") && trimmed.length in 20..30) {
+                    youtubeChannelId.value = trimmed
+                    context.getSharedPreferences("OverlayPrefs", Context.MODE_PRIVATE).edit {
+                        putString("youtube_channel_id", trimmed)
+                    }
+                    cachedYoutubeVideoId = null
+                    startYoutubeViewerUpdates()
+                    youtubeClient.connect(trimmed)
+                    onComplete?.invoke(true)
+                } else {
+                    onComplete?.invoke(false)
+                }
+            }
         }
     }
 

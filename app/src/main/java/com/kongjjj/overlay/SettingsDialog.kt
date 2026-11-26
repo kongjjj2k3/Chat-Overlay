@@ -64,7 +64,7 @@ fun SettingsDialog(
     ttsIgnoreLinks: Boolean,
     ttsOnlySubOrCheer: Boolean,
     onSaveChannel: (String) -> Unit,
-    onSaveYoutubeChannelId: (String) -> Unit,
+    onSaveYoutubeChannelId: (String, ((Boolean) -> Unit)?) -> Unit,
     onSaveKickChannel: (String) -> Unit = {},
     onFontSizeChange: (Float) -> Unit,
     onLineSpacingChange: (Float) -> Unit,
@@ -207,7 +207,7 @@ fun SettingsDialogView(
     ttsIgnoreLinks: Boolean,
     ttsOnlySubOrCheer: Boolean,
     onSaveChannel: (String) -> Unit,
-    onSaveYoutubeChannelId: (String) -> Unit,
+    onSaveYoutubeChannelId: (String, ((Boolean) -> Unit)?) -> Unit,
     onSaveKickChannel: (String) -> Unit = {},
     onFontSizeChange: (Float) -> Unit,
     onLineSpacingChange: (Float) -> Unit,
@@ -374,7 +374,7 @@ fun SettingsContent(
     ttsIgnoreLinks: Boolean,
     ttsOnlySubOrCheer: Boolean,
     onSaveChannel: (String) -> Unit,
-    onSaveYoutubeChannelId: (String) -> Unit,
+    onSaveYoutubeChannelId: (String, ((Boolean) -> Unit)?) -> Unit,
     onSaveKickChannel: (String) -> Unit = {},
     onFontSizeChange: (Float) -> Unit,
     onLineSpacingChange: (Float) -> Unit,
@@ -448,34 +448,57 @@ fun SettingsContent(
             }
         }
 
-        // YouTube Channel ID
+        // YouTube Handle
         Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-            Text(getLabel("YouTube Channel ID", appLanguage), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(getLabel("YouTube Handle", appLanguage), style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalAlignment = Alignment.CenterVertically) {
+                var isSaving by remember { mutableStateOf(false) }
                 OutlinedTextField(
                     value = youtubeInput,
                     onValueChange = { youtubeInput = it },
-                    placeholder = { Text("Channel ID (UC...)") },
+                    placeholder = { Text("e.g., @Google") },
                     singleLine = true,
+                    enabled = !isSaving,
                     modifier = Modifier.weight(1f),
                     keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
                     keyboardActions = KeyboardActions(
                         onDone = {
                             val trimmed = youtubeInput.trim()
-                            onSaveYoutubeChannelId(trimmed)
-                            keyboardController?.hide()
-                            Toast.makeText(context, getLabel("Saved", appLanguage), Toast.LENGTH_SHORT).show()
+                            isSaving = true
+                            onSaveYoutubeChannelId(trimmed) { success ->
+                                isSaving = false
+                                keyboardController?.hide()
+                                if (success) {
+                                    Toast.makeText(context, getLabel("Saved", appLanguage), Toast.LENGTH_SHORT).show()
+                                } else {
+                                    Toast.makeText(context, getLabel("Failed to resolve YouTube Handle", appLanguage), Toast.LENGTH_LONG).show()
+                                }
+                            }
                         },
                     )
                 )
                 FilledTonalButton(
+                    enabled = !isSaving,
                     onClick = {
                         val trimmed = youtubeInput.trim()
-                        onSaveYoutubeChannelId(trimmed)
-                        keyboardController?.hide()
-                        Toast.makeText(context, getLabel("Saved", appLanguage), Toast.LENGTH_SHORT).show()
+                        isSaving = true
+                        onSaveYoutubeChannelId(trimmed) { success ->
+                            isSaving = false
+                            keyboardController?.hide()
+                            if (success) {
+                                Toast.makeText(context, getLabel("Saved", appLanguage), Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(context, getLabel("Failed to resolve YouTube Handle", appLanguage), Toast.LENGTH_LONG).show()
+                            }
+                        }
                     }
-                ) { Text(getLabel("Save", appLanguage)) }
+                ) {
+                    if (isSaving) {
+                        CircularProgressIndicator(modifier = Modifier.size(18.dp), strokeWidth = 2.dp)
+                    } else {
+                        Text(getLabel("Save", appLanguage))
+                    }
+                }
             }
         }
 
@@ -810,6 +833,8 @@ fun getLabel(key: String, lang: String): String {
         "Close" to mapOf("zh-TW" to "關閉", "en" to "Close", "ja" to "閉じる"),
         "Twitch Channel" to mapOf("zh-TW" to "Twitch 頻道", "en" to "Twitch Channel", "ja" to "Twitchチャンネル"),
         "YouTube Channel ID" to mapOf("zh-TW" to "YouTube 頻道 ID", "en" to "YouTube Channel ID", "ja" to "YouTubeチャンネルID"),
+        "YouTube Handle" to mapOf("zh-TW" to "YouTube 頻道 Handle", "en" to "YouTube Handle", "ja" to "YouTubeハンドル"),
+        "Failed to resolve YouTube Handle" to mapOf("zh-TW" to "無法解析 YouTube Handle，請確認名稱是否正確", "en" to "Failed to resolve YouTube Handle, please check handle name", "ja" to "YouTubeハンドルの解析に失敗しました"),
         "Kick Channel" to mapOf("zh-TW" to "Kick 頻道", "en" to "Kick Channel", "ja" to "Kickチャンネル"),
         "Channel Name" to mapOf("zh-TW" to "頻道名稱", "en" to "Channel Name", "ja" to "チャンネル名"),
         "Save" to mapOf("zh-TW" to "儲存", "en" to "Save", "ja" to "保存"),

@@ -208,6 +208,7 @@ class FloatingViewService : Service(), LifecycleOwner, SavedStateRegistryOwner {
             setContent {
                 ChatOverlayTheme {
                     val twitchChannel by chatManager.twitchChannel.collectAsState()
+                    val youtubeHandle by chatManager.youtubeHandle.collectAsState()
                     val youtubeChannelId by chatManager.youtubeChannelId.collectAsState()
                     val kickChannel by chatManager.kickChannel.collectAsState()
                     
@@ -320,6 +321,7 @@ class FloatingViewService : Service(), LifecycleOwner, SavedStateRegistryOwner {
                             kickViewersCount = kickViewersCount,
                             uptimeText = uptimeText,
                             openLinksInBrowser = openLinksInBrowser,
+                            youtubeHandle = youtubeHandle,
                             onResetHideTimer = { resetHideTimer() },
                             onLinkClicked = { url ->
                                 collapseToBubble()
@@ -332,7 +334,7 @@ class FloatingViewService : Service(), LifecycleOwner, SavedStateRegistryOwner {
                         if (showSettings) {
                             SettingsDialogView(
                                 twitchChannel = twitchChannel,
-                                youtubeChannelId = youtubeChannelId,
+                                youtubeChannelId = youtubeHandle.ifEmpty { youtubeChannelId },
                                 kickChannel = kickChannel,
                                 chatFontSize = fontSize,
                                 chatLineSpacing = lineSpacing,
@@ -364,7 +366,7 @@ class FloatingViewService : Service(), LifecycleOwner, SavedStateRegistryOwner {
                                 ttsIgnoreLinks = ttsIgnoreLinks,
                                 ttsOnlySubOrCheer = ttsOnlySubOrCheer,
                                 onSaveChannel = { chatManager.saveTwitchChannel(it, this@FloatingViewService) },
-                                onSaveYoutubeChannelId = { chatManager.saveYoutubeChannelId(it, this@FloatingViewService) },
+                                onSaveYoutubeChannelId = { input, onComplete -> chatManager.saveYoutubeChannelId(input, this@FloatingViewService, onComplete) },
                                 onSaveKickChannel = { chatManager.saveKickChannel(it, this@FloatingViewService) },
                                 onFontSizeChange = { chatManager.saveFontSize(it, this@FloatingViewService) },
                                 onLineSpacingChange = { chatManager.saveLineSpacing(it, this@FloatingViewService) },

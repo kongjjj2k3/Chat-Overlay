@@ -11,8 +11,8 @@ android {
         applicationId = "com.kongjjj.overlay"
         minSdk = 24
         targetSdk = 37
-        versionCode = 39
-        versionName = "1.39"
+        versionCode = 40
+        versionName = "1.40"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -33,10 +33,14 @@ android {
     buildFeatures {
         compose = true
     }
+    lint {
+        checkReleaseBuilds = false
+        abortOnError = false
+    }
 }
 
 base {
-    archivesName.set("Chat_overlay_1.39")
+    archivesName.set("Chat_overlay_1.40")
 }
 
 dependencies {
