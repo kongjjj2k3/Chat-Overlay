@@ -4,7 +4,7 @@
 
 <h1>Chat Overlay</h1>
 
-ログイン不要 Android向けの透明なYouTube/Twitch/Kickチャットオーバーレイ、ライブ配信で使用するもの。
+*ログイン不要 Android向けの透明なYouTube/Twitch/Kickチャットオーバーレイ、ライブ配信で使用するもの。*
 <br><br>
 [![Twitch](https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com)
@@ -60,11 +60,13 @@
 ---
 
 ## インストール方法
-[GitHub releases](https://github.com/masarujp2022/Chat-Overlay/releases) にて最新の .apk ファイルを公開します。
+[GitHub releases](https://github.com/kongjjj2k3/Chat-Overlay/releases) にて最新の .apk ファイルを公開します。
 
 スマートフォンで GitHub のリリースページを開き、.apk ファイルをダウンロードしてインストールしてください。
 
 ---
 
 ## その他の制作アプリ
-
+- [OBS Viewer Overlay](https://github.com/kongjjj2k3/OBS-Viewer-Overlay) : Overlay to display Twitch, Youtube, Kick live viewer count in OBS33.
+- [MediaMTX-server-bitrate-html](https://github.com/kongjjj2k3/MediaMTX-server-bitrate-html) : HTML for OBS overlay that shows current bitrate of MediaMTX RTMP & SRT servers.
+- [HK Post Box Map](https://github.com/kongjjj2k3/HK-Post-Box-Map) : 一個基於 Android、OpenStreetMap (osmdroid) 及香港 CSDI (空間數據共享平台) Open Data 打造的完整郵箱地圖與 GPS 行山軌跡記錄應用程式。

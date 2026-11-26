@@ -4,7 +4,7 @@
 
 <h1>Chat Overlay</h1>
 
-An Android Transparent Youtube/Twitch/Kick Chat viewer app for IRL streaming.
+*An Android Transparent Youtube/Twitch/Kick Chat viewer app for IRL streaming.*
 <br><br>
 [![Twitch](https://img.shields.io/badge/Twitch-9146FF?style=for-the-badge&logo=twitch&logoColor=white)](https://twitch.tv)
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com)
@@ -59,12 +59,14 @@ An Android Transparent Youtube/Twitch/Kick Chat viewer app for IRL streaming.
 ---
 
 ## Installation Method
-I will publish the latest .apk file in the [GitHub releases](https://github.com/masarujp2022/Chat-Overlay/releases) 
+I will publish the latest .apk file in the [GitHub releases](https://github.com/kongjjj2k3/Chat-Overlay/releases) 
 
 You can open the GitHub releases page on your phone, download the .apk file, and install it.
 
 ---
 
 ## Other projects I have made
-
+- [OBS Viewer Overlay](https://github.com/kongjjj2k3/OBS-Viewer-Overlay) : Overlay to display Twitch, Youtube, Kick live viewer count in OBS33.
+- [MediaMTX-server-bitrate-html](https://github.com/kongjjj2k3/MediaMTX-server-bitrate-html) : HTML for OBS overlay that shows current bitrate of MediaMTX RTMP & SRT servers.
+- [HK Post Box Map](https://github.com/kongjjj2k3/HK-Post-Box-Map) : 一個基於 Android、OpenStreetMap (osmdroid) 及香港 CSDI (空間數據共享平台) Open Data 打造的完整郵箱地圖與 GPS 行山軌跡記錄應用程式。
 
