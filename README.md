@@ -15,7 +15,7 @@
 <br>
 ![GitHub language count](https://img.shields.io/github/languages/count/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
 ![GitHub top language](https://img.shields.io/github/languages/top/kongjjj2k3/Chat-Overlay?&style=for-the-badge)
-[![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-orange?style=for-the-badge)](LICENSE.txt)
 [![Release](https://img.shields.io/github/release/kongjjj2k3/Chat-Overlay?color=0000FF&label=Release&style=for-the-badge&logo=android&logoColor=white)](https://github.com/kongjjj2k3/Chat-Overlay/releases/latest)
 [![Downloads](https://img.shields.io/github/downloads/kongjjj2k3/Chat-Overlay/total?label=Downloads&style=for-the-badge&color=lightgreen)](https://github.com/kongjjj2k3/Chat-Overlay/releases)
 
